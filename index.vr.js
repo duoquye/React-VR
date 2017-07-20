@@ -10,6 +10,10 @@ import {
     Image,
 } from 'react-vr';
 
+/* myself components*/
+import Playground from './components/Playground';
+import TimerMixin from './components/TimerMixin'
+
 export default class ReactVR extends React.Component {
     constructor(props){
         super(props);
@@ -36,6 +40,8 @@ export default class ReactVR extends React.Component {
           >
               barret 此事你怎么看
           </Text>
+          <TimerMixin/>
+          <Playground/>
       </View>
     );
   }
