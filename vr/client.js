@@ -7,7 +7,8 @@ import {VRInstance} from 'react-vr-web';
 
 /* add fonts*/
 import * as OVRUI from 'ovrui';
-//import * as THREE from 'three';
+import * as THREE from 'three';
+import ThreeDOFRayCaster from '../inputs/3dof/ThreeDOFRayCaster';
 
 const fallbackFonts ={
     "../static_assets/fonts/fonts/cjk_0.fnt":"../static_assets/fonts/fonts/cjk_0_sdf.png",
@@ -18,15 +19,17 @@ var font = OVRUI.loadFont();
 var count = 0;
 
 function init(bundle, parent, options) {
-  //const scene = new THREE.Scene();
+  const scene = new THREE.Scene();
   function addFallback(fallbackFont){
     OVRUI.addFontFallback(font,fallbackFont);
     count--;
     if(count === 0){
       const vr = new VRInstance(bundle, 'ReactVR', parent, {
           // Add custom options here
+          raycasters:[new ThreeDOFRayCaster(scene),new OVRUI.MouseRayCaster()],
+          cursorVisibility:'auto',
+          scene,
           font,
-          /*scene,*/
           ...options,
       });
       vr.render = function() {

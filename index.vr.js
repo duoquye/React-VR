@@ -13,6 +13,7 @@ import {
 /* myself components*/
 import Playground from './components/Playground';
 import TimerMixin from './components/TimerMixin'
+import ViewColoredBoxesWithText from './components/ViewColoredBoxesWithText'
 
 export default class ReactVR extends React.Component {
     constructor(props){
@@ -25,6 +26,7 @@ export default class ReactVR extends React.Component {
     return (
       <View>
         <Pano source={asset('chess-world.jpg')}/>
+          <ViewColoredBoxesWithText/>
           <Text
               style={{
                   color: this.state.textColor,
